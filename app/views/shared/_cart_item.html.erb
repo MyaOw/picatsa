@@ -1,0 +1,38 @@
+	<tr id="tr_cart_item_<%=@item_in_cart.id%>">
+    <td class="product-thumbnail  text-left">
+      <div class="single-product">
+        <div class="product-img">
+          <a href="single-product.html"><img src="<%= @item_in_cart.image_mini%>" alt="" /></a>
+        </div>
+        <div class="product-info">
+      <h4 class="post-title"><a class="text-light-black" href="#"><%= @item_in_cart.title%></a></h4>
+      <p class="mb-0">Délivré par e-mail</p>
+      <p class="mb-0">&nbsp;</p>
+    </div>
+  </div>
+  <!-- Single-product end -->
+</td>
+
+<td class="product-price"><%= @item_in_cart.price%> €</td>
+
+
+<td class="product-quantity">
+  <% if edit_quantity %>
+  <div class="cart-plus-minus">
+    <input type="text" value="01" name="qtybutton" class="cart-plus-minus-box">
+  </div>
+  <% else %>
+  1
+  <% end %>
+</td>
+
+
+<td class="product-subtotal"><%= @item_in_cart.price %> €</td>
+
+<% if edit_remove %>
+<td class="product-remove">
+	<%= link_to "X", remove_item_in_cart_path(item_in_cart.id), method: :delete, remote: true %>
+  <!-- <a href="#"><i class="zmdi zmdi-close"></i></a> -->
+</td>
+<% end %>
+</tr>

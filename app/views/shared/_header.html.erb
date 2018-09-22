@@ -1,0 +1,46 @@
+<header id="sticky-menu" class="header header-2">
+    <div class="header-area">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4 col-xs-7">
+            <div class="logo text-left">
+              <%= link_to image_tag('logo.png'), root_path %>
+            </div>
+          </div>
+          <div class="col-sm-4 col-sm-offset-4 col-xs-5">
+            <div class="">
+
+            </div>
+
+            <div class="mini-cart text-right">
+
+              <ul>
+                <li class="menu-header-right">
+                  <% if user_signed_in? %>
+
+                    <% if current_user.is_admin? %>
+                      <%= link_to "Dashboard", admin_path  %>
+                    <% end %>
+                    <%= link_to "Mon compte", edit_user_registration_path %>
+                    <%= link_to "Deconnexion", destroy_user_session_path, method: :delete %>
+                  <% else %>
+                    <%= link_to "Connexion  ", new_user_session_path%>
+                </li>
+                <li class="menu-header-right">
+                  <div class="footer-subscribe mt-20">
+                    <%= link_to "<button>Inscription</button>".html_safe, new_user_registration_path%>
+                  </div>
+                </li>
+              <% end %>
+                </li>
+                <li>
+                  <%= render 'shared/header_cart', cart: @cart%>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </header>

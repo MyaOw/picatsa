@@ -1,0 +1,65 @@
+<% if current_user.is_admin? %>
+<!-- SHOPPING-CART-AREA START -->
+	<div class="login-area pt-80 pb-80">
+		<div class="container">
+			<form action="#">	
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="customer-login text-left">
+							<h4 class="title-1 title-border text-uppercase mb-30">Enregistrer un nouveau produit</h4>
+
+          					<%= link_to "Ajouter un chat", create_item_path, remote:true %>
+								<% @items.each do |e| %>
+						          	<%= link_to edit_item_path(e), remote: true do %>
+						          	<%= image_tag e.image_mini, width:75 %>
+						        <% end %>
+			        		<% end %>
+						</div>					
+					</div>
+						<div class="col-md-6 col-sm-6 col-xs-12 form_edit">
+							<div class="customer-login text-left">
+								<h4 class="title-1 title-border text-uppercase mb-30">Modification de chat</h4>
+								<div class="admin-images">
+									<%= form_with(url: admin_path) do |f| %>
+										<%= image_tag @item.image %><%= image_tag @item.image %>
+									    <div class="field">
+										    <%= f.label "nom" %><br />
+										    <%= f.text_field :title, autocomplete: "Chat" %>
+									    </div>
+									    <div class="field">
+										    <%= f.label "description" %><br />
+										    <%= f.text_area :description, autocomplete: "Chat" %>
+									    </div>
+										<div class="field">
+										    <%= f.label "price" %><br />
+										    <%= f.number_field :price, autocomplete: "2.9" %>
+									    </div>
+										<div class="field">
+										    <%= f.label "slug" %><br />
+										    <%= f.text_field :slug, autocomplete: "chat-attribut" %>
+									    </div>
+										<div class="field">
+										    <%= f.label "categorie" %><br />
+										    <%= f.collection_select(:item, Category.all, :id, :title, prompt: true) %>
+									    </div>
+										<div class="field">
+										    <%= f.label "couleur" %><br />
+										    <%= f.collection_select(:item, Color.all, :id, :title, prompt: true) %>
+									    </div>
+									    <div class="field">
+										    <%= f.label "taille" %><br />
+										    <%= f.collection_select(:item, Size.all, :id, :title, prompt: true) %>
+									    </div>
+									    <%= link_to 'Edit', edit_item_path(f), class: "btn btn-secondary"%>
+								        <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- SHOPPING-CART-AREA END -->
+<% end %>

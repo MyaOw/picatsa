@@ -1,0 +1,18 @@
+<h3 class="payment-accordion-toggle">Commande n°<%= @order_c.id %> - <%= @order_c.created_at %> - <%= @order_c.cart.total%> € </h3>
+<div class="our-order payment-details mb-30">
+<table>
+<tbody>
+
+  <% for @item_c in @order_c.cart.items %>
+  <tr>
+    <td><%= @item_c.title %>  x 1</td>
+    <td class="text-right"><%= @item_c.price %> €</td>
+  </tr>
+  <% end %>
+
+    <td>Order Total</td>
+    <td class="text-right"><%= @order_c.cart.total%> €</td>
+  </tr>
+</tbody>
+</table>
+</div>

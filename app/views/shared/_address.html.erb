@@ -1,0 +1,50 @@
+<!-- ORDER-AREA START -->
+			<div class="shopping-cart-area  pt-80 pb-80">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="shopping-cart">
+								<!-- Nav tabs -->
+								<ul class="cart-page-menu row clearfix mb-30">
+                	<li><%= link_to "Panier", cart_path %></li>
+                  <li class="active"><%= link_to "Coordonnées", address_path %></li>
+                  <li><%= link_to "Confirmation", "#" %></li>
+									<li><%= link_to "Merci !", complete_path %></li>
+								</ul>
+
+								<!-- Tab panes -->
+								<div class="tab-content">
+									<!-- shopping-cart start -->
+									<div class="tab-pane active" id="address">
+										<form action="<%= recap_path %>">
+											<div class="shop-cart-table check-out-wrap">
+												<div class="row">
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<div class="billing-details pr-20">
+															<h4 class="title-1 title-border text-uppercase mb-30">adresse de livraison</h4>
+															<% if user_signed_in? %>
+                    						<p>Votre commande sera envoyée à l'adresse : <%= current_user.email %></p>
+                  						<% else %>
+                    						<p>Pour passer commande, veuillez vous identifier ici : <%= link_to "Connexion  ", new_user_session_path%></p>
+															<% end -%>
+														</div>
+													</div>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<div class="payment-method pl-20">
+															<% if user_signed_in? %>
+																<button class="button-one submit-button mt-15" data-text="confirmer la commande" type="submit">Continuer</button>
+															<% end %>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+									<!-- shopping-cart end -->
+
+								</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,83 @@
+<!-- ORDER-AREA START -->
+			<div class="shopping-cart-area  pt-80 pb-80">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="shopping-cart">
+								<!-- Nav tabs -->
+								<ul class="cart-page-menu row clearfix mb-30">
+									<li class="active"><%= link_to "Panier", cart_path %></li>
+					        <li><%= link_to "Coordonnées", address_path %></li>
+					        <li><%= link_to "Confirmation", recap_path %></li>
+									<li><%= link_to "Merci !", complete_path %></li>
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content">
+									<!-- shopping-cart start -->
+									<div class="tab-pane active" id="shopping-cart">
+										<form action="<%= address_path %>">
+											<div class="shop-cart-table">
+												<div class="table-content table-responsive">
+													<table>
+														<thead>
+															<tr>
+																<th class="product-thumbnail">Produit</th>
+																<th class="product-price">Prix</th>
+																<th class="product-quantity">Quantité</th>
+																<th class="product-subtotal">Total</th>
+																<th class="product-remove">Supprimer</th>
+															</tr>
+														</thead>
+														<tbody id="tbody_cart">
+
+
+																<% for @item_in_cart in @cart.items %>
+																	<%= render 'shared/cart_item', item_in_cart: @item_in_cart , edit_quantity: false, edit_remove: true %>
+																<% end %>
+
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<div class="customer-login mt-30">
+														<h4 class="title-1 title-border text-uppercase">code promo</h4>
+														<p class="text-gray">Entrez votre code promo si vous en avez un !</p>
+														<input type="text" placeholder="Entrer votre code ici.">
+														<button type="submit" data-text="apply coupon" class="button-one submit-button mt-15">appliquer</button>
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<div class="customer-login payment-details mt-30 mb-30">
+														<h4 class="title-1 title-border text-uppercase">détails</h4>
+														<table>
+															<tbody>
+																<tr>
+																	<td class="text-left">Sous-total</td>
+																	<td class="text-right"><%= @cart.total %> €</td>
+																</tr>
+																<tr>
+																	<td class="text-left">Livraison</td>
+																	<td class="text-right">0.00 €</td>
+																</tr>
+																<tr>
+																	<td class="text-left">Total</td>
+																	<td class="text-right"><%= @cart.total %> €</td>
+																</tr>
+															</tbody>
+														</table>
+                            <button class="button-one submit-button mt-15" data-text="confirmer la commande" type="submit">Confirmer la commande</button>
+                            </div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+									<!-- shopping-cart end -->
+								</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,18 @@
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+  <div class="single-product">
+    <div class="product-img">
+      <span class="pro-price-2"><%= number_to_currency item.price, unit: "€", separator: ",", format: "%n %u"%></span>
+      <a href="/<%= item.slug %>"><%= image_tag item.image_mini %></a>
+    </div>
+    <div class="product-info clearfix text-center">
+      <div class="fix">
+        <h4 class="post-title"><a href="#"><%= item.title %></a></h4>
+      </div>
+      <div class="product-action clearfix">
+        <%= link_to add_item_in_cart_path(item.id), remote: true, toggle: "tooltip", placement: "top"  do %>
+          <i class="zmdi zmdi-shopping-cart-plus caddie"></i>  Ajouter au panier
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

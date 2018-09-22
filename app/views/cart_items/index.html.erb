@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cart Items ici ?</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cart</th>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.cart.to_s %></td>
+        <td><%= cart_item.item %></td>
+        <td><%= cart_item.quantity %></td>
+        <td><%= link_to 'Show', cart_item %></td>
+        <td><%= link_to 'Destroy', cart_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cart Item', new_cart_item_path %>

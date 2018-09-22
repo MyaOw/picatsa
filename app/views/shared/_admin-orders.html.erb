@@ -1,0 +1,86 @@
+	<h1>salut</h1>
+<% if current_user.is_admin? %>
+
+	<div class="tab-content">
+	<!-- shopping-cart start -->
+		<div class="tab-pane active" id="confirmation">
+			<form action="#">
+				<div class="shop-cart-table">
+					<div class="table-content table-responsive">
+						<table>
+							<thead>
+								<tr>
+									<th class="product-thumbnail">Produit</th>
+									<th class="product-price">Prix</th>
+									<th class="product-quantity">Quantité</th>
+									<th class="product-subtotal">Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="product-thumbnail  text-left">
+										<!-- Single-product start -->
+										<div class="single-product">
+											<div class="product-img">
+												<a href="single-product.html">
+													<% @cart_items.each do |e| %>
+									                    <a href=#><%= image_tag e.image_mini, width:75 %></a>
+									                <% end %>
+											</div>
+											<div class="product-info">
+												<h4 class="post-title"><a class="text-light-black" href="#">dummy product name</a></h4>
+												<p class="mb-0">Délivré par e-mail</p>
+													<p class="mb-0">&nbsp;</p>
+											</div>
+										</div>
+										<!-- Single-product end -->												
+									</td>
+									<td class="product-price">$56.00</td>
+									<td class="product-quantity">2</td>
+									<td class="product-subtotal">$112.00</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="customer-login mt-30">
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="customer-login payment-details mt-30 mb-30">
+							<h4 class="title-1 title-border text-uppercase">détails</h4>
+							<table>
+								<tbody>
+									<tr>
+										<td class="text-left">Sous-total</td>
+										<td class="text-right">155.00 €</td>
+									</tr>
+									<tr>
+										<td class="text-left">Livraison</td>
+										<td class="text-right">0.00 €</td>
+									</tr>
+									<tr>
+										<td class="text-left">Total</td>
+										<td class="text-right">155.00 €</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="stripe">
+							  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+							  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+							  data-description="A month's subscription"
+							  data-amount="500"
+							  data-locale="auto"></script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>		
+		</div>
+	<!-- shopping-cart end -->
+	</div>
+			
+<% end %>

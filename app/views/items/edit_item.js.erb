@@ -1,0 +1,5 @@
+$(document).ready(function(){
+	let edit_item = $("<%= j (render 'shared/admin-item_edit') %>");
+
+	$("#item_new").html(edit_item);
+})

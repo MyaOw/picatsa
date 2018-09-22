@@ -1,0 +1,75 @@
+<!-- ORDER-AREA START -->
+			<div class="shopping-cart-area  pt-80 pb-80">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+									<!-- account start -->
+									<div class="tab-pane" id="account">
+										<form action="#">
+											<div class="shop-cart-table check-out-wrap">
+												<div class="row">
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<div class="billing-details pr-20">
+															<h4 class="title-1 title-border text-uppercase mb-30">éditer mon compte</h4>
+															<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                              <%= devise_error_messages! %>
+
+                              <div class="field">
+                                <%= f.label :email %><br />
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                              </div>
+
+                              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                              <% end %>
+
+                              <div class="field">
+                                <%= f.label :password %> <i>(<%= @minimum_password_length %> caractères minimum - laisser vide si vous ne souhaitez pas modifier)</i><br />
+                                <%= f.password_field :password, autocomplete: "new-password" %>
+                                <% if @minimum_password_length %>
+
+                                <% end %>
+                              </div>
+
+                              <div class="field">
+                                <%= f.label :password_confirmation %><br />
+                                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                              </div>
+
+                              <div class="field">
+                                <%= f.label :current_password %> <i>(nécessaire pour appliquer les changements)</i><br />
+                                <%= f.password_field :current_password, autocomplete: "current-password" %>
+                              </div>
+
+                              <div class="actions">
+                                <%= f.submit "Mettre à jour", class: "button-one submit-button mt-15" %>
+                              </div>
+                              <% end %>
+                              <br />
+                              <p>Vous souhaitez vous désinscrire ? <%= button_to "Clore mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr ?" }, method: :delete, class: "button-one submit-button mt-15" %></p>
+
+														</div>
+													</div>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+														<div class="payment-method  pl-20">
+															<h4 class="title-1 title-border text-uppercase mb-30">historique des commandes</h4>
+															<div class="payment-accordion">
+																<!-- Accordion start  -->
+
+																<% for @order_c in current_user.orders %>
+																	<%= render 'shared/order_item', order_c: @order_c%>
+																<% end %>
+
+																<!-- Accordion end -->
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+                  <!-- account end -->
+								</div>
+          </div>
+        </div>
+      </div>

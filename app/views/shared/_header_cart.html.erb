@@ -1,0 +1,24 @@
+<a class="cart-icon" href="#">
+  <i class="zmdi zmdi-shopping-cart"></i>
+  <span id="nbcatcart">
+    <%= @cart.items.count %>
+  </span>
+</a>
+<div class="mini-cart-brief text-left">
+  <div class="cart-items">
+    <p class="mb-0">Vous avez <span id="nbcat"><%= @cart.items.count %> produit(s)</span> dans votre panier</p>
+  </div>
+  <div class="all-cart-product clearfix" id="cart">
+    <% for @item_2 in @cart.items %>
+      <%= render 'shared/item_in_cart', item: @item_2 %>
+    <% end %>
+  </div>
+
+  <div class="cart-totals">
+    <h5 class="mb-0">Total <span class="floatright" id="total_cart"><%= @cart.total %> €</span></h5>
+
+  </div>
+  <div class="cart-bottom  clearfix">
+    <%= link_to "Voir panier", cart_path(@cart.id), class: "button-one floatright text-uppercase", text: "Voir panier" %>
+  </div>
+</div>

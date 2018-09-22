@@ -1,0 +1,13 @@
+<div class="widget-title">
+  <h4>Taille</h4>
+</div>
+<div class="widget-info size-filter clearfix">
+  <ul>
+    <%for size in @sizes%>
+    <li>
+      <%= link_to size.title, size_path(size: size.id) %>
+    </li>
+    <%end%>
+
+  </ul>
+</div>

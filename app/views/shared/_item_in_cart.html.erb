@@ -1,0 +1,14 @@
+<div class="single-cart clearfix" id="cart_item_<%= item.id %>">
+
+  <div class="cart-photo">
+    <a href="#"><%= image_tag item.image_mini %></a>
+  </div>
+  <div class="cart-info">
+    <h5><a href="#"><%= item.title %></a></h5>
+    <p class="mb-0">Price :  <%=  item.price %></p>
+    <span class="cart-delete">
+      <%= link_to "X", remove_item_in_cart_path(item.id), method: :delete, remote: true %>
+      <a href="#"></a>
+    </span>
+  </div>
+</div>

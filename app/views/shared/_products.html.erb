@@ -1,0 +1,104 @@
+<div class="product-area pt-80 pb-80 product-style-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-12 col-xs-12">
+          <!-- Widget-Search start -->
+          <aside class="widget widget-search mb-30">
+            <form action="#">
+              <input type="text" placeholder="Rechercher ici..." />
+              <button type="submit">
+                <i class="zmdi zmdi-search"></i>
+              </button>
+            </form>
+          </aside>
+          <!-- Widget-search end -->
+          <!-- Widget-Categories start -->
+          <aside class="widget widget-categories  mb-30">
+            <%= render 'shared/category', categories: @categories%>
+          </aside>
+          <!-- Widget-categories end -->
+          <!-- Shop-Filter start
+          <aside class="widget shop-filter mb-30">
+            <div class="widget-title">
+              <h4>Price</h4>
+            </div>
+            <div class="widget-info">
+              <div class="price_filter">
+                <div class="price_slider_amount">
+                  <input type="submit"  value="You range :"/>
+                  <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                </div>
+                <div id="slider-range"></div>
+              </div>
+            </div>
+          </aside>
+           Shop-Filter end -->
+          <!-- Widget-Color start -->
+          <aside class="widget widget-color mb-30">
+            <%= render 'shared/color', color: @color%>
+
+          </aside>
+          <!-- Widget-Color end -->
+          <!-- Widget-Size start -->
+          <aside class="widget widget-size mb-30">
+            <%= render 'shared/size', size: @sizes%>
+          </aside>
+          <!-- Widget-Size end -->
+        </div>
+        <div class="col-md-9 col-sm-12 col-xs-12">
+          <!-- Shop-Content End -->
+          <div class="shop-content mt-tab-30 mt-xs-30">
+            <div class="product-option mb-30 clearfix">
+              <!-- Nav tabs -->
+
+              <div class="showing text-right hidden-xs">
+                <p class="mb-0" id="showing">Affichage de <%= @showing%> photos</p>
+              </div>
+            </div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane active" id="grid-view">
+                <div class="row">
+                  <!-- Single-product start -->
+
+                  <%   for item in @items %>
+                    <%= render 'shared/product-item', item: item %>
+                  <% end %>
+
+                  <!-- Single-product end -->
+                </div>
+              </div>
+            </div>
+            <!-- Pagination start -->
+            <div class="shop-pagination  text-center">
+              <div class="pagination">
+                <ul>
+                  <li>
+                    <% if (@current_page - 1) > 0 %>
+                      <%= link_to pagination_path(@current_page - 1) do %>
+                        <i class="zmdi zmdi-long-arrow-left"></i>
+                        <% end %>
+                    <% end %>
+                  </li>
+                  <% (1..@nbPage+1).each do |page| %>
+                      <li>
+                        <%= link_to "0#{page}", pagination_path(page) %>
+                      </li>
+                  <% end %>
+                  <li>
+                    <% if (@current_page + 1) <  (@nbPage+1) %>
+                    <%= link_to pagination_path(@current_page + 1)  do %>
+                      <i class="zmdi zmdi-long-arrow-right"></i>
+                    <% end %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+           <!--  Pagination end -->
+          </div>
+          <!-- Shop-Content End -->
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,12 @@
+<div class="widget-title">
+  <h4>Catégories</h4>
+</div>
+<div id="cat-treeview"  class="widget-info product-cat boxscrol2">
+  <ul>
+    <%for category in @categories%>
+    <li>
+      <%= link_to category.title, category_path(category: category.id) %>
+    </li>
+    <%end%>
+    </ul>
+</div>
